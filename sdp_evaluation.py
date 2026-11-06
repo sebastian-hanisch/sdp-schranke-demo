@@ -2,7 +2,7 @@
 
 Alle Aussagen gelten für die gerechneten Instanzen, die sechs erfundenen Familien und die **eigene Fassung** der Relaxation (Facial Reduction, Pfeil, Gangster; R3 mit Y ≥ 0) und des ADMM (ρ-Anpassung, Schrittgrenze, Toleranz).
 **Lücke** = (Vergleichswert − Schranke) / Vergleichswert; der Vergleichswert ist bis n = 9 das aufgezählte Optimum, bei n = 12 das vom Baum bewiesene (feste Reihen) oder die beste von 200 Abstiegen (einzelne Instanz: dann ist die Lücke eine
-**untere** Grenze der wahren Lücke). Der **Wert des ADMM** ist bei grober Toleranz keine Schranke; Aussagen über Schranken beziehen sich auf die **sichere Schranke** aus der Dualmatrix. Zeiten sind Sekunden dieser numpy-Fassung auf diesem Rechner
+**obere** Grenze der wahren Lücke). Der **Wert des ADMM** ist bei grober Toleranz keine Schranke; Aussagen über Schranken beziehen sich auf die **sichere Schranke** aus der Dualmatrix. Zeiten sind Sekunden dieser numpy-Fassung auf diesem Rechner
 (schwanken von Lauf zu Lauf um das Doppelte; nur Größenordnungen sind belastbar) und stehen nie in Tests."""
 
 from __future__ import annotations

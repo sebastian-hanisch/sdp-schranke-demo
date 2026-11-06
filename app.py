@@ -269,7 +269,7 @@ st.markdown("---")
 # --- Experiment 5 ---------------------------------------------------------------------------------------------------------------------------
 
 st.subheader("🔬 Experiment 5: Die Größe")
-st.caption(f"Eine Instanz je Größe (Familie „zwei Cluster“, Seed {C.FIXED_SEED0}), beide Stufen, Schrittgrenze {count(C.SCALE_MAX_ITER)}: Zeit je Schritt (Eigenzerlegung der PSD-Matrix, wächst wie r³) und Schritte; hohle Punkte sind nicht konvergiert.")
+st.caption(f"Eine Instanz je Größe (Familie „zwei Cluster“, Seed {C.FIXED_SEED0}), beide Stufen, Schrittgrenze {count(C.SCALE_MAX_ITER)}: Zeit je Schritt (Eigenzerlegung der PSD-Matrix, asymptotisch wie r³; im gemessenen Bereich etwa wie r²) und Schritte; hohle Punkte sind nicht konvergiert.")
 if run_knob("scale_ok", "⏱️ Größen rechnen (n = 6 bis 16)", "Die Rechnung läuft über sechs Größen mit beiden Stufen und dauert einige Minuten (n = 16 mit R3 an der Schrittgrenze etwa zwei Minuten; auf Streamlit Cloud länger). Mit dem Knopf starten:",
             [(f"n = {m}, {C.VARIANT_SHORT[vv]}", (m, vv)) for m in C.SCALE_SIZES for vv in C.VARIANTS], lambda m, vv: _scale(m, vv)):
     srows = [_scale(m, vv) for m in C.SCALE_SIZES for vv in C.VARIANTS]
@@ -291,7 +291,7 @@ st.markdown(
 |---|---|---|
 | **Eigene Herleitung** | Lift, Pfeil, Gangster, Facial Reduction, die Stufen R2 und R3, der ADMM und die sichere Schranke sind eigene Fassungen; Zhao, Karisch, Rendl, Wolkowicz (Relaxation), Povh und Rendl (Nichtnegativität) und Wen, Goldfarb, Yin (ADMM für SDP) sind **nicht eingesehen**. Die Namen R2 und R3 sind Bezeichnungen dieser Demo. | Konvexe Linie (SDP), Stück 3 bis 6 |
 | **Nur kleine Größen mit bekanntem Optimum** | n = 6 bis 12; bei n = 16 nur eine Instanz ohne Optimum. Wie die Stufen bei n = 20 und mehr arbeiten, ist nicht untersucht. | – |
-| **Der ADMM konvergiert nicht immer** | R3 braucht bei n ≥ 10 teils mehr als 8 000 Schritte; an der Schrittgrenze ist der Wert keine Schranke, die sichere Schranke bleibt gültig (aber schwächer). Die App sagt es. | – |
+| **Der ADMM konvergiert nicht immer** | R3 erreicht schon bei n = 8 und 9 in einzelnen Instanzen die Schrittgrenze von 15 000, in der Größenreihe bei n = 10, 14 und 16 die Grenze von 8 000 Schritten; an der Schrittgrenze ist der Wert keine Schranke, die sichere Schranke bleibt gültig (aber schwächer). Die App sagt es. | – |
 | **Eine Stufe, keine weiteren Schnitte** | Dreiecksungleichungen und andere Schnitte (stärkere Relaxationen) sind nicht gebaut; die Schärfe von R3 gilt für die gemessenen Instanzen und Familien. | – |
 | **Rundung nur durch lineare Zuordnung** | Es gibt bessere Rundungen (aus der Lösung mehrere Anordnungen ziehen, dann Tausch); hier steht nur die einfachste. | Stück 12 (Tauschabstieg) |
 | **Schranke im Baum nicht gemessen** | Ob die SDP am Knoten die Knotenzahl senkt, ist offen: sie kostet Sekunden je Knoten. | Stück 8 |

@@ -90,7 +90,7 @@ PRESETS = {
 }
 PRESET_HELP = {
     "Standardfall: R3, acht Bauteile": "Acht Bauteile, Familie „zwei Cluster“: die SDP mit Y ≥ 0 liegt fast auf dem Optimum; die sichere Schranke belegt es.",
-    "R2 statt R3": "Dieselbe Instanz ohne Y ≥ 0: die Schranke fällt zurück, oft unter die Gilmore–Lawler-Schranke.",
+    "R2 statt R3": "Dieselbe Instanz ohne Y ≥ 0: die Schranke fällt hier nur leicht zurück (0,07 %); auf dünnen und schiefen Flüssen liegt R2 oft unter Gilmore–Lawler.",
     "Vier Bauteile": "Vier Bauteile auf dem 2×2-Raster: die Relaxation passt auf einen Bildschirm (N = 17).",
     "Dünn besetzt: R2 schwach": "Wenige Flüsse: R2 liegt weit unter dem Optimum und unter Gilmore–Lawler; R3 schließt die Lücke.",
     "Schiefe Flüsse: R2 schwach": "Wenige sehr starke Flüsse: dasselbe Bild wie bei dünnen Flüssen.",
