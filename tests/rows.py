@@ -4,9 +4,15 @@ Zeiten stehen in den Zeilen, aber nie in den Tests; die Parallelität ändert nu
 
 import multiprocessing
 import os
-from concurrent.futures import ProcessPoolExecutor
 
-import sdp_evaluation as E
+# Ein BLAS-Thread je Prozess, bevor numpy geladen wird (die Kindprozesse erben die Umgebung): mehrere Prozesse mit mehrfädigem BLAS auf wenigen Kernen
+# verlangsamen die kleinen Eigenzerlegungen des ADMM um ein Vielfaches (Linux-CI: Zeilen für n = 12 über zweieinhalb Stunden statt Minuten).
+for _var in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
+    os.environ.setdefault(_var, "1")
+
+from concurrent.futures import ProcessPoolExecutor  # noqa: E402
+
+import sdp_evaluation as E  # noqa: E402
 
 _ROWS: dict = {}
 

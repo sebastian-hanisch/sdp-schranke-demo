@@ -1,9 +1,14 @@
 """Gemeinsame Fixtures: die Handbeispiele und zwei Landschaften, an denen jede Einheit geprüft wird (DEMO-PLAYBOOK §1b)."""
 
+import os
 import sys
 from pathlib import Path
 
-import pytest
+# Ein BLAS-Thread, bevor numpy geladen wird (siehe tests/rows.py).
+for _var in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
+    os.environ.setdefault(_var, "1")
+
+import pytest  # noqa: E402
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 

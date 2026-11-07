@@ -28,4 +28,8 @@ jobs:
         run: pip install -r requirements-dev.txt
 
       - name: Tests ausführen
+        env:
+          OMP_NUM_THREADS: "1"
+          OPENBLAS_NUM_THREADS: "1"
+          MKL_NUM_THREADS: "1"
         run: python -m pytest tests/ -v --durations=10

@@ -25,7 +25,10 @@ R2_BELOW_GLB = {6: 8, 8: 10, 9: 7, 12: 8}                                       
 R2_BELOW_LP = {8: 22, 9: 15}                                                    # ± 3
 R3_BEATS_ALL = {6: 21, 8: 20, 9: 16, 12: 18}                                    # R3 über der besten der anderen vier Schranken; ± 3
 R3_SHARP = {6: 22, 8: 25, 9: 12, 12: 7}                                         # R3 scharf (Lücke unter 0,05 %); ± 4
-ROUND_HITS = {"r3": {6: 15, 8: 19, 9: 6, 12: 3}, "r2": {6: 11, 8: 6, 9: 1, 12: 0}}   # Rundung trifft das Optimum; ± 4 (R2: ± 3)
+# Rundung trifft das Optimum. Die Zählung hängt am Rechner: gemessen (Windows, ein bis mehrere BLAS-Threads, OpenBLAS-Kernel Haswell und Nehalem) bei R3 n = 6: 13 bis 15, n = 8: 10 bis 19 (Linux-CI 13),
+# n = 9: 6 bis 9, n = 12: etwa 3; bei R2 n = 6: 11 bis 13, n = 8: 4 bis 7, n = 9: 1, n = 12: 0. Mitte dieser Spannen und Toleranz je Größe so, dass die gemessenen Werte darin liegen.
+ROUND_HITS = {"r3": {6: 14, 8: 15, 9: 8, 12: 3}, "r2": {6: 12, 8: 6, 9: 1, 12: 0}}
+ROUND_TOL = {"r3": {6: 5, 8: 7, 9: 5, 12: 4}, "r2": {6: 5, 8: 4, 9: 3, 12: 3}}
 DESCENT_HITS = {6: 30, 8: 30, 9: 18, 12: 17}                                    # 200 Abstiege treffen das Optimum: ganzzahlig, genau
 NOT_CONVERGED = {"r2": {6: 0, 8: 2, 9: 0, 12: 2}, "r3": {6: 0, 8: 1, 9: 4, 12: 1}}   # an der Schrittgrenze; erlaubt: Messwert + 2
 
@@ -115,7 +118,8 @@ def test_families_where_r2_is_weak(n):
 def test_rounding_of_the_solution(n):
     rows = RW.ladder_rows(n)
     off = []
-    for v, tol in (("r3", 4), ("r2", 3)):
+    for v in ("r3", "r2"):
+        tol = ROUND_TOL[v][n]
         got = E.round_stats(rows, v)["hit"]
         if abs(got - ROUND_HITS[v][n]) > tol:
             off.append(f"n = {n}, {v}: Rundung trifft in {got} statt {ROUND_HITS[v][n]} ± {tol}")
