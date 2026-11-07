@@ -94,7 +94,10 @@ def solve(q, perms, nonneg: bool = False, tol: float = 1e-6, mu: float = 6.0, ma
     while True:
         for _ in range(60):
             R = Rw(w)
-            Ri = np.linalg.inv(R)
+            try:
+                Ri = np.linalg.inv(R)
+            except np.linalg.LinAlgError:                                     # numerisch singulär (Linux-CI, entartete Instanz): Pseudo-Inverse
+                Ri = np.linalg.pinv(R)
             P = np.einsum("ab,ibc->iac", Ri, Q)
             grad = t * g - np.einsum("iaa->i", P)
             H = P.reshape(k, -1) @ P.transpose(0, 2, 1).reshape(k, -1).T            # tr(P_i P_j)
@@ -102,7 +105,10 @@ def solve(q, perms, nonneg: bool = False, tol: float = 1e-6, mu: float = 6.0, ma
                 ye = y0 + Ae @ w
                 grad -= Ae.T @ (1.0 / ye)
                 H += (Ae / ye[:, None] ** 2).T @ Ae
-            dw = -np.linalg.solve(H, grad)
+            try:
+                dw = -np.linalg.solve(H, grad)
+            except np.linalg.LinAlgError:                                     # dito: Schritt kleinster Norm
+                dw = -np.linalg.lstsq(H, grad, rcond=None)[0]
             lam2 = float(-grad @ dw)
             newton_total += 1
             if lam2 / 2.0 < 1e-8:
