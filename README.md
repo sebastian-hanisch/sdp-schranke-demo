@@ -1,9 +1,8 @@
 # SDP-Schranke fürs Zuordnungsproblem – Streamlit-Demo
 
-<!-- TODO nach dem Deploy: direkt hierher den Live-Link setzen (Leerzeile davor und danach):
-**[→ Demo live ausprobieren](https://sebastianhanisch-sdp-schranke-demo.streamlit.app/)** -->
+**[→ Demo live ausprobieren](https://sebastianhanisch-sdp-schranke-demo.streamlit.app/)**
 
-Stück 7 von 15 (gelb, optional) der **Konzepte-Reihe „Anordnen: relaxieren und runden“** für die Website „Sebastian Hanisch – Operations Research und Machine Learning“ (die Konzepte-Seite der Reihe gibt es noch nicht). Die Schranken der Leiter stehen in den Stücken [3, Gilmore–Lawler](https://github.com/sebastian-hanisch/gilmore-lawler-demo), [4, Eigenwert und Projektion](https://github.com/sebastian-hanisch/eigenwert-schranke-demo) und [5, Linearisierung und Dual Ascent](https://github.com/sebastian-hanisch/linearisierung-schranke-demo), der Baum, der sie einsetzt, in [8, Branch and Bound](https://github.com/sebastian-hanisch/schranke-im-baum-demo); Stück [15, Verfahrenswahl](https://github.com/sebastian-hanisch/anordnen-verfahrenswahl-demo) stellt die Verfahren der Reihe gegeneinander. Die PSD-Projektion ist dieselbe Rechnung wie in der Konvexen Linie ([Max-Cut als SDP](https://github.com/sebastian-hanisch/kegel-maxcut-demo)).
+Stück 7 von 15 (gelb, optional) der **Konzepte-Reihe „Anordnen: relaxieren und runden“** für die Website „Sebastian Hanisch – Operations Research und Machine Learning“ (die [Konzepte-Seite der Reihe](https://sebastianhanisch.net/konzepte-anordnen.html)). Die Schranken der Leiter stehen in den Stücken [3, Gilmore–Lawler](https://github.com/sebastian-hanisch/gilmore-lawler-demo), [4, Eigenwert und Projektion](https://github.com/sebastian-hanisch/eigenwert-schranke-demo) und [5, Linearisierung und Dual Ascent](https://github.com/sebastian-hanisch/linearisierung-schranke-demo), der Baum, der sie einsetzt, in [8, Branch and Bound](https://github.com/sebastian-hanisch/schranke-im-baum-demo); Stück [15, Verfahrenswahl](https://github.com/sebastian-hanisch/anordnen-verfahrenswahl-demo) stellt die Verfahren der Reihe gegeneinander. Die PSD-Projektion ist dieselbe Rechnung wie in der Konvexen Linie ([Max-Cut als SDP](https://github.com/sebastian-hanisch/kegel-maxcut-demo)).
 
 ## Warum dieses Problem
 
